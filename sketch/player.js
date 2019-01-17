@@ -1,11 +1,11 @@
-const mutationRate = 0.1;
+const mutationRate = 0.5;
 
 class Player {
 
   constructor(brain) {
-    this.pos = [0,300];
-    this.size = 300;
-    this.movement = 0;
+    this.pos = [0,200,400];
+    this.size = 200;
+    this.movement = 1;
     this.x = this.pos[0];
     this.y = height-this.size;
     this.score = 0;
@@ -14,7 +14,7 @@ class Player {
     if(brain){
       this.brain = brain.copy();
     } else {
-      this.brain = new NeuralNetwork(4,4,1);
+      this.brain = new NeuralNetwork(4,8,3);
     }
 
 
@@ -40,10 +40,12 @@ class Player {
     inputs[3] = enemy.y / height;
 
     let output = this.brain.predict(inputs);
-    if(output[0] > 0.5){
-      this.movement = 1;
-    }else {
+    if(output[0] > output[1] && output[0] > output[2]) {
       this.movement = 0;
+    } else if(output[1] > output[0] && output[1] > output[2]){
+      this.movement = 1;
+    } else if(output[2] > output[1] && output[2] > output[0]) {
+      this.movement = 2;
     }
   }
 

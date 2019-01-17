@@ -1,4 +1,4 @@
-const popTotal = 500;
+const popTotal = 20;
 let players = [];
 let savePlayers = [];
 let enemy;
@@ -11,7 +11,7 @@ let highscore = 0;
 
 function setup() {
   button = createButton("Speed");
-  button.position(600,80);
+  button.position(900,80);
   button.mousePressed(changeSpeed);
   createCanvas(600,800);
   textSize(40);
@@ -61,7 +61,7 @@ function drawScore(){
 
 function collision(player){
   var d = dist(player.x,player.y,enemy.x,enemy.y);
-  if(d <= enemy.size){
+  if(d < enemy.size){
     savePlayers.push(players.splice(player, 1)[0]);
   }
 }

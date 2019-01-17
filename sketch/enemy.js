@@ -1,9 +1,9 @@
 class Enemy {
 
 	constructor(){
-		this.pos = [0,300]
-		this.size = 300;
- 		this.x = this.pos[0];
+		this.pos = [0,200,400]
+		this.size = 200;
+ 		this.x = this.pos[int(random(3))];
  		this.y = 0;
 	}
  
@@ -15,6 +15,8 @@ class Enemy {
 
      		if(this.x === 0 ){
      			this.x = this.pos[1];
+     		} else if(this.x === 200){
+     			this.x = this.pos[2];
      		} else {
      			this.x = this.pos[0];
      		}

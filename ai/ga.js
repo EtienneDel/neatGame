@@ -24,7 +24,7 @@ function pickBestPlayer() {
   index --;
   let player = savePlayers[index];
   let child = new Player(player.brain)
-  //console.log(child.fitness);
+  console.log(child.fitness);
   return child;
 }
 
