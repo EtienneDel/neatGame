@@ -168,11 +168,13 @@ class NeuralNetwork {
   // Accept an arbitrary function for mutation
   mutate(rate) {
 
-    function mutate(val) {
-      if(Math.random()<rate){
-        return val + randomGaussian(0,0.1);
+    function mutate(rate) {
+      if (random(1) < 0.1) {
+        let offset = randomGaussian() * 0.5;
+        let newRate = rate + offset;
+        return newRate;
       } else {
-        return val;
+        return rate;
       }
     }
 
