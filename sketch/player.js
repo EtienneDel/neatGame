@@ -1,4 +1,4 @@
-const mutationRate = 0.5;
+const mutationRate = 0.1;
 
 class Player {
 
@@ -13,6 +13,7 @@ class Player {
 
     if(brain){
       this.brain = brain.copy();
+      this.brain.mutate(mutationRate);
     } else {
       this.brain = new NeuralNetwork(4,8,3);
     }
@@ -24,7 +25,6 @@ class Player {
   update() {
     this.x = this.pos[this.movement];
     this.score ++;
-    //console.log(this.fitness);
   }
   
   show() {

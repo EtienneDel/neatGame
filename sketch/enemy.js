@@ -11,17 +11,17 @@ class Enemy {
 	move(x) {
    		if((this.y+this.size) === 800) {
      		this.y = 0;
-     		//this.x = this.pos[int(random(3))];
+     		this.x = this.pos[int(random(3))];
 
-     		if(this.x === 0 ){
-     			this.x = this.pos[1];
-     		} else if(this.x === 200){
-     			this.x = this.pos[2];
-     		} else {
-     			this.x = this.pos[0];
-     		}
+     		// if(this.x === 0 ){
+     		// 	this.x = this.pos[1];
+     		// } else if(this.x === 200){
+     		// 	this.x = this.pos[2];
+     		// } else {
+     		// 	this.x = this.pos[0];
+     		// }
    		}
-   		this.y = this.y + 10;
+   		this.y = this.y + 20;
  	}
  
  	show() {

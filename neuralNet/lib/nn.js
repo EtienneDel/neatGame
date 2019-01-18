@@ -172,7 +172,7 @@ class NeuralNetwork {
       if(Math.random()<rate){
         return val + randomGaussian(0,0.1);
       } else {
-        return vale;
+        return val;
       }
     }
 

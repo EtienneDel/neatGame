@@ -1,4 +1,4 @@
-const popTotal = 20;
+const popTotal = 500;
 let players = [];
 let savePlayers = [];
 let enemy;
@@ -11,7 +11,7 @@ let highscore = 0;
 
 function setup() {
   button = createButton("Speed");
-  button.position(900,80);
+  button.position(600,80);
   button.mousePressed(changeSpeed);
   createCanvas(600,800);
   textSize(40);
