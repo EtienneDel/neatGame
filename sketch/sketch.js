@@ -10,11 +10,12 @@ let button;
 let highscore = 0;
 
 function setup() {
-  button = createButton("Speed");
-  button.position(600,80);
+  let canvas = createCanvas(600,800);
+  canvas.parent('game');
+  button = createButton(" Change speed");
+  button.parent('game');
+  button.position(485,10);
   button.mousePressed(changeSpeed);
-  createCanvas(600,800);
-  textSize(40);
   for(let i = 0; i < popTotal; i++){
   players[i] = new Player();
   }
@@ -44,9 +45,7 @@ function draw() {
     }
     
     background(51);
-    text('Generation : '+generation, width/2, 40);
-    text('Population : '+popTotal, width/2, 100);
-    text('High score : '+highscore, width/2, 160);
+    
     for(let player of players){
       player.show();
     }
@@ -55,8 +54,12 @@ function draw() {
 }
 
 function drawScore(){
- fill(255)
- text(score, 10, 40)
+  fill(255);
+  textSize(30);
+  text('Generation : '+generation, 10, 30);
+  text('Population : '+popTotal, 10, 70);
+  text('High score : '+highscore, 10, 110);
+  text('Score : '+score, 10, 150);
 }
 
 function collision(player){
