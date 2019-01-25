@@ -15,7 +15,7 @@ class Player {
       this.brain = brain.copy();
       this.brain.mutate(mutationRate);
     } else {
-      this.brain = new NeuralNetwork(6, 8,3);
+      this.brain = new NeuralNetwork(6, 12, 3);
     }
   }
 
@@ -31,18 +31,14 @@ class Player {
   }
 
   think(enemies) {
-    let distance = 0;
-    let prevDistance = Infinity;
-    let enemy = null;
+    let whitespaceX = 0;
 
-    for(let i = 0; i < enemies.length; i++){
-      distance = dist(this.x, this.y, enemies[i].x, enemies[i].y);
-      if(distance >= prevDistance){
-        enemy = enemies[i];
-      } else {
-        enemy = enemies[i-1]
-      }
-      prevDistance = dist(this.x, this.y, enemies[i].x, enemies[i].y);
+    if(enemies[0].x === 0 && enemies[1].x === 200){
+      whitespaceX = 400;
+    }else if (enemies[0].x === 200 && enemies[1].x === 400){
+      whitespaceX = 0;
+    }else {
+      whitespaceX = 200;
     }
 
     let inputs = [];
@@ -52,6 +48,8 @@ class Player {
     inputs[3] = enemies[0].y / height;
     inputs[4] = enemies[1].x / width;
     inputs[5] = enemies[1].y / height;
+    // inputs[3] = whitespaceX / width;
+
 
     let output = this.brain.predict(inputs);
     if(output[0] > output[1] && output[0] > output[2]) {
