@@ -82,11 +82,7 @@ function collision(player){
   for(let i = 0; i < enemies.length; i++){
     var d = dist(player.x,player.y,enemies[i].x,enemies[i].y);
     if(d < enemies[i].size){
-      if(player.score >= 100){
-        player.score = player.score - 100;
-      } else {
-        player.score = 0;
-      }
+      player.score > 100 ? player.score = player.score -100 : player.score = 0;
       savePlayers.push(players.splice(player, 1)[0]);
     }
   }
