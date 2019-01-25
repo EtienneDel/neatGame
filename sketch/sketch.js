@@ -46,10 +46,8 @@ function draw() {
         collision(player);
       }
 
-      // enemies[1].move(enemies[0]);
-
       for(let [index, enemy] of enemies.entries()){
-        enemy.move(enemies[index-1]);
+        enemy.move(enemies[index-1], players);
       }
 
       score++;
@@ -82,7 +80,7 @@ function collision(player){
   for(let i = 0; i < enemies.length; i++){
     var d = dist(player.x,player.y,enemies[i].x,enemies[i].y);
     if(d < enemies[i].size){
-      player.score > 100 ? player.score = player.score -100 : player.score = 0;
+      player.score > 100 ? player.score -= 100 : player.score = 0;
       savePlayers.push(players.splice(player, 1)[0]);
     }
   }

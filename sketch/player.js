@@ -48,8 +48,6 @@ class Player {
     inputs[3] = enemies[0].y / height;
     inputs[4] = enemies[1].x / width;
     inputs[5] = enemies[1].y / height;
-    // inputs[3] = whitespaceX / width;
-
 
     let output = this.brain.predict(inputs);
     if(output[0] > output[1] && output[0] > output[2]) {
