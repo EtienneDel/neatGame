@@ -1,9 +1,9 @@
 const popTotal = 500;
+const nbEnemies = 2;
 let players = [];
 let savePlayers = [];
-let enemy;
+let enemies = [];
 let score = 0;
-let died = false;
 let generation  = 1;
 let speed = 1;
 let button;
@@ -17,26 +17,40 @@ function setup() {
   button.position(485,10);
   button.mousePressed(changeSpeed);
   for(let i = 0; i < popTotal; i++){
-  players[i] = new Player();
+    players[i] = new Player();
   }
-  enemy = new Enemy();
+  for(let i = 0; i < nbEnemies; i++){
+    enemies[i] = new Enemy(enemies[i-1]);
+  }
+}
+
+function keyPressed(){
+  if (key === 'S') {
+    let player = players[0];
+    saveJSON(player.brain, 'bestPlayer.json')
+  }
 }
 
 function draw() {
     
     for(n = 0; n < speed; n++){
-      if(players.length === 0) {
+      if(players.length === 0 && enemies[0].y <= 400) {
         nextGeneration();
         score = 0;
         generation++;
       }
 
       for(let player of players) {
-        player.think();
+        player.think(enemies);
         player.update();
         collision(player);
       }
-      enemy.move();
+
+      // enemies[1].move(enemies[0]);
+
+      for(let [index, enemy] of enemies.entries()){
+        enemy.move(enemies[index-1]);
+      }
 
       score++;
       if(score > highscore){
@@ -49,7 +63,9 @@ function draw() {
     for(let player of players){
       player.show();
     }
-    enemy.show();
+    for(let enemy of enemies){
+      enemy.show();
+    }
     drawScore();
 }
 
@@ -63,9 +79,12 @@ function drawScore(){
 }
 
 function collision(player){
-  var d = dist(player.x,player.y,enemy.x,enemy.y);
-  if(d < enemy.size){
-    savePlayers.push(players.splice(player, 1)[0]);
+  for(let i = 0; i < enemies.length; i++){
+    var d = dist(player.x,player.y,enemies[i].x,enemies[i].y);
+    if(d < enemies[i].size){
+      player.score > 100 ? player.score = player.score -100 : player.score = 0;
+      savePlayers.push(players.splice(player, 1)[0]);
+    }
   }
 }
 
@@ -76,12 +95,3 @@ function changeSpeed(){
     speed = 1;
   }
 }
-
-
-// function keyPressed() {
-//   if(keyCode === LEFT_ARROW){
-//     players[0].move(-1)
-//   } else if(keyCode === RIGHT_ARROW){
-//     players[0].move(1)
-//   }
-// }

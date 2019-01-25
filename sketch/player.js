@@ -15,10 +15,8 @@ class Player {
       this.brain = brain.copy();
       this.brain.mutate(mutationRate);
     } else {
-      this.brain = new NeuralNetwork(4,8,3);
+      this.brain = new NeuralNetwork(6, 12, 3);
     }
-
-
   }
 
   
@@ -28,16 +26,30 @@ class Player {
   }
   
   show() {
-    fill(46,148,181);
+    fill(46,148,181, 100);
     rect(this.x, this.y, this.size, this.size);
   }
 
-  think() {
+  think(enemies) {
+    let whitespaceX = 0;
+
+    if(enemies[0].x === 0 && enemies[1].x === 200){
+      whitespaceX = 400;
+    }else if (enemies[0].x === 200 && enemies[1].x === 400){
+      whitespaceX = 0;
+    }else {
+      whitespaceX = 200;
+    }
+
     let inputs = [];
     inputs[0] = this.x / width;
     inputs[1] = this.y / height;
-    inputs[2] = enemy.x / width;
-    inputs[3] = enemy.y / height;
+    inputs[2] = enemies[0].x / width;
+    inputs[3] = enemies[0].y / height;
+    inputs[4] = enemies[1].x / width;
+    inputs[5] = enemies[1].y / height;
+    // inputs[3] = whitespaceX / width;
+
 
     let output = this.brain.predict(inputs);
     if(output[0] > output[1] && output[0] > output[2]) {
