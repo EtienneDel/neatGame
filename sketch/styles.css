@@ -17,34 +17,26 @@ body {
     position: relative;
 }
 
-#speed {
+button {
     position: absolute;
-    top: 0;
     right: 10px;
     width: 200px;
     height: 50px;
     font-family: 'CeraBl';
     font-size: 125%;
     color: white;
-    background-color: #333333;
+    background-color: transparent;
     border-radius: 25px;
     border: 2px solid white;
     cursor: pointer;
 }
 
+#speed {
+    top: 0;
+}
+
 #run {
-    position: absolute;
     top: 60px;
-    right: 10px;
-    width: 200px;
-    height: 50px;
-    font-family: 'CeraBl';
-    font-size: 125%;
-    color: white;
-    background-color: #333333;
-    border-radius: 25px;
-    border: 2px solid white;
-    cursor: pointer;
 }
 
 h1 {
