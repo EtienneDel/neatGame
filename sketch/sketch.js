@@ -139,7 +139,7 @@ function resetGame(){
 }
 
 function drawScore(){
-  stroke(none);
+  stroke(255);
   fill(255);
   textSize(30);
   textFont(font);
