@@ -17,6 +17,36 @@ body {
     position: relative;
 }
 
+#speed {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    width: 200px;
+    height: 50px;
+    font-family: 'CeraBl';
+    font-size: 125%;
+    color: white;
+    background-color: #333333;
+    border-radius: 25px;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+#run {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    width: 200px;
+    height: 50px;
+    font-family: 'CeraBl';
+    font-size: 125%;
+    color: white;
+    background-color: #333333;
+    border-radius: 25px;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
 h1 {
     color: white;
     font-family: 'CeraBl';
@@ -41,4 +71,8 @@ p {
     top: 0;
     right: 10px;
     width: 600px;
+}
+
+button:focus {
+    outline: 0;
 }

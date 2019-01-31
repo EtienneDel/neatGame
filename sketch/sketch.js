@@ -8,7 +8,8 @@ let enemies = [];
 let score = 0;
 let generation  = 1;
 let speed = 1;
-let button;
+let buttonS;
+let buttonR;
 let highscore = 0;
 let state = false;
 let brainJSON;
@@ -16,22 +17,20 @@ let data;
 
 function preload(){
   brainJSON = loadJSON("bestPlayer.json");
+  font = loadFont('assets/Cera\ Pro\ Bold.otf');
 }
 
 function setup() {
   let canvasG = createCanvas(600,800);
   canvasG.parent('game');
   
-  button = createButton(" Change speed");
-  button.parent('game');
-  button.position(485, 10);
+  buttonS = select('#speed');
+  buttonS.parent('game');
+  buttonR = select('#run');
+  buttonR.parent('game');
 
-  button2 = createButton("Run best");
-  button2.parent('game');
-  button2.position(519, 40);
-
-  button.mousePressed(changeSpeed);
-  button2.mousePressed(runBest);
+  buttonS.mousePressed(changeSpeed);
+  buttonR.mousePressed(runBest);
 
   for(let i = 0; i < popTotal; i++){
     players[i] = new Player();
@@ -102,8 +101,10 @@ function keyPressed(){
 
 function changeSpeed(){
   if(speed === 1 ){
+    buttonS.html('Speed: x1');
     speed = 100;
   } else {
+    buttonS.html('Speed: x100');
     speed = 1;
   }
 }
@@ -111,9 +112,11 @@ function changeSpeed(){
 function runBest(){
   state = !state;
   if(state){
+    buttonR.html('Return to training');
     savePlayers.push(players);
     resetGame();
   } else {
+    buttonR.html('Run saved player');
     nextGeneration();
     score = 0;
     generation++;
@@ -129,7 +132,6 @@ function resetGame(){
   let playerBrain = NeuralNetwork.deserialize(brainJSON);
   player = new Player(playerBrain)
   players[0] = player;
-  console.log(players)
 }
 
 function drawScore(){
@@ -137,6 +139,7 @@ function drawScore(){
   stroke(0);
   fill(255);
   textSize(30);
+  textFont(font);
   text('Generation : '+generation, 10, 30);
   text('Population : '+popTotal, 10, 70);
   text('High score : '+highscore, 10, 110);
