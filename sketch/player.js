@@ -18,7 +18,6 @@ class Player {
       this.brain = new NeuralNetwork(6, 12, 3);
     }
   }
-
   
   update() {
     this.x = this.pos[this.movement];
@@ -26,20 +25,13 @@ class Player {
   }
   
   show() {
+		strokeWeight(1);
+		stroke(46,148,181, 100);
     fill(46,148,181, 100);
     rect(this.x, this.y, this.size, this.size);
   }
 
   think(enemies) {
-    let whitespaceX = 0;
-
-    if(enemies[0].x === 0 && enemies[1].x === 200){
-      whitespaceX = 400;
-    }else if (enemies[0].x === 200 && enemies[1].x === 400){
-      whitespaceX = 0;
-    }else {
-      whitespaceX = 200;
-    }
 
     let inputs = [];
     inputs[0] = this.x / width;
@@ -50,6 +42,7 @@ class Player {
     inputs[5] = enemies[1].y / height;
 
     let output = this.brain.predict(inputs);
+    
     if(output[0] > output[1] && output[0] > output[2]) {
       this.movement = 0;
     } else if(output[1] > output[0] && output[1] > output[2]){

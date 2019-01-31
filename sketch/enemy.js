@@ -32,6 +32,8 @@ class Enemy {
  	}
  
  	show() {
+		strokeWeight(1)
+		stroke(214,35,30)
    		fill(214,35,30)
    		rect(this.x, this.y, this.size, this.size)
  	}

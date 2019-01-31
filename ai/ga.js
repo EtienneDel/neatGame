@@ -23,6 +23,7 @@ function pickBestPlayer() {
 
   index --;
   let player = savePlayers[index];
+  bestPlayer = player;
   let child = new Player(player.brain)
   return child;
 }
