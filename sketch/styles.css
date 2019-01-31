@@ -1,0 +1,44 @@
+@font-face{
+    font-family: CeraBl;
+    src: url('assets/Cera\ Pro\ Bold.otf') format('opentype');
+    font-weight: bold;
+}
+
+body {
+    padding: 0; 
+    margin: 0; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    background-color: #333333;
+}
+
+#game {
+    position: relative;
+}
+
+h1 {
+    color: white;
+    font-family: 'CeraBl';
+    font-size: 300%;
+}
+
+p {
+    color: white;
+    font-family: 'CeraBl';
+    font-size: 150%;
+}
+
+.infos {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    width: 600px;
+}
+
+.how {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    width: 600px;
+}

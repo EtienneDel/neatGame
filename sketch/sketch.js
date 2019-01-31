@@ -80,7 +80,6 @@ function draw() {
     enemy.show();
   }  
   
-  drawLines();
   drawScore();
 }
 
@@ -131,13 +130,6 @@ function resetGame(){
   player = new Player(playerBrain)
   players[0] = player;
   console.log(players)
-}
-
-function drawLines(){
-  strokeWeight(4);
-  stroke(255);
-  line(200, 0, 200, 800);
-  line(400, 0, 400, 800);
 }
 
 function drawScore(){

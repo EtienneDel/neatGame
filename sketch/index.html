@@ -2,7 +2,6 @@
 <head>
   <meta charset="UTF-8">
 
-  <!-- PLEASE NO CHANGES BELOW THIS LINE (UNTIL I SAY SO) -->
   <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
   <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.dom.min.js"></script>
   <script language="javascript" type="text/javascript" src="sketch.js"></script>
@@ -11,14 +10,26 @@
   <script language="javascript" type="text/javascript" src="../neuralNet/lib/nn.js"></script>
   <script language="javascript" type="text/javascript" src="../neuralNet/lib/matrix.js"></script>
   <script language="javascript" type="text/javascript" src="../ai/ga.js"></script>
-  <!-- OK, YOU CAN MAKE CHANGES BELOW THIS LINE AGAIN -->
-
-  <!-- This line removes any default padding and style. 
-       You might only need one of these values set. -->
-  <style> body {padding: 0; margin: 0; display: flex; justify-content: center; align-items: center;} </style>
+  <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
 <body>
-  <div id="game" style="position: relative;"></div>
+  <div id="game"></div>
+  <div class="infos">
+    <h1>Neat game</h1>
+    <p>This is a POC game with an AI using neuro evolution to learn how to play.</p>
+    <p>The goal is simple, the blue cube just need to avoid the falling red cubes that have a random spawn.</p>
+    <p>Generation : this is the current batch of blue cubes that will be then use to evolve. When all the blue cubes have been destroyed an other generation will be created.</p>
+    <p>Population : this is just the number of blue cubes in the generation. 
+      We need a lot of cubes to have at least one that will do a better score than the others and can be used to "bread".</p>
+    <p>Score : consider that if the score is going higher than 2000, the AI learned to play the game and will never fail.</p>
+  </div>
+  <div class="how">
+    <h1>How to use : </h1>
+    <p>The AI can take up to a thousand generations to be trained so feel free to use the button 'Change speed' to have a x100 accelerated process, click on it again to come back to the original speed.</p>
+    <p>You can hit the 'S' key to save your player.</p>
+    <p>There is already a good player saved, so if you want you can just click on 'Run best' to see an AI that learned to play without the training process.
+      Click on the button again to return to training mode.</p>
+  </div>
 </body>
 </html>
