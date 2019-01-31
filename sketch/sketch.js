@@ -26,6 +26,7 @@ function setup() {
   
   buttonS = select('#speed');
   buttonS.parent('game');
+
   buttonR = select('#run');
   buttonR.parent('game');
 
@@ -48,9 +49,13 @@ function draw() {
     background(51)
 
     if(players.length === 0 && enemies[0].y <= 400) {
-      nextGeneration();
-      score = 0;
-      generation++;
+      if(state){
+        runBest();
+      } else {
+        nextGeneration();
+        score = 0;
+        generation++;
+      }
     }
 
     for(let player of players) {
@@ -65,7 +70,6 @@ function draw() {
     score++;
 
   } 
-
   
   if(score > highscore){
     highscore = score;
@@ -113,7 +117,6 @@ function runBest(){
   state = !state;
   if(state){
     buttonR.html('Return to training');
-    savePlayers.push(players);
     resetGame();
   } else {
     buttonR.html('Run saved player');
@@ -124,6 +127,7 @@ function runBest(){
 }
 
 function resetGame(){
+  savePlayers.push(players);
   players = []
   score = 0;
   for(let enemy of enemies){
@@ -135,7 +139,6 @@ function resetGame(){
 }
 
 function drawScore(){
-  strokeWeight(1);
   stroke(0);
   fill(255);
   textSize(30);
