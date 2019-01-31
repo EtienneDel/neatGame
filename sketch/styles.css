@@ -68,3 +68,20 @@ p {
 button:focus {
     outline: 0;
 }
+
+@media screen and (max-width: 1900px){
+
+    .infos {
+        position: absolute;
+        top: 900px;
+        left: 10px;
+        width: 45%;
+    }
+    
+    .how {
+        position: absolute;
+        top: 900px;
+        right: 10px;
+        width: 45%;
+    }
+}
